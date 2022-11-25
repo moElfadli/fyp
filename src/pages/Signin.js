@@ -4,8 +4,7 @@ import { GoogleButton } from 'react-google-button';
 import { UserAuth } from '../context/AuthContext';
 
 const Signin = () => {
-  const { signInWithGoogle } = UserAuth();
-  const GoogleSignIn = UserAuth();
+  const { GoogleSignIn } = UserAuth();
 
   const handleGoogleSignIn = async() => {
     try {
@@ -21,7 +20,7 @@ const Signin = () => {
         <h1 className='text-center text 4xl font-bold py-8'>Signin</h1>
         <div className='max-w-[260px] m-auto py-4'>
             <GoogleButton onClick={handleGoogleSignIn}/>
-    </div>
+        </div>
     </div>
   );
 };

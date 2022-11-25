@@ -6,12 +6,12 @@ const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
 
-    const googleSignIn = () => {
+    const GoogleSignIn = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
     }
     return (
-        <AuthContext.Provider value={{ googleSignIn }}>
+        <AuthContext.Provider value={{ GoogleSignIn }}>
             {children}
         </AuthContext.Provider>
     )

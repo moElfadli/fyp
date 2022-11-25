@@ -1,28 +1,24 @@
-// import logo from './logo.svg';
-import './App.css';
-import { Route, Routes, Router} from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
 // import Navbar from './components/Navbar';
-// import Home from './pages/Home';
-import Signin from './pages/Signin'; 
-// import Account from './pages/Account';
+// import Protected from './components/Protected';
 import { AuthContextProvider } from './context/AuthContext';
+// import Account from './pages/Account';
+// import Home from './pages/Home';
+import Signin from './pages/Signin';
 
 function App() {
   return (
-
     <div>
       <AuthContextProvider>
-      {/* <Navbar /> */}
-      <Router>
-      <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/signin" element={<Signin />} />
-        {/* <Route path="/account" element={<Account />} /> */}
-      </Routes>
-      </Router>
+        {/* <Navbar /> */}
+        <Router>
+          <Routes>
+            <Route path='/signin' element={<Signin />} />
+          </Routes>
+        </Router>
       </AuthContextProvider>
     </div>
-    
   );
 }
 
