@@ -8,7 +8,7 @@ import { db } from "../firebase-config";
 const Answer = ({questionid, val, docid}) => {
 
     //this is the state that will hold the submission answers
-    const [state, SetState] = useState({[questionid]: {answer: val.answer, score: val.score, feedback: val.feedback}});
+    const [state, SetState] = useState({[questionid]: {question: val.question, answer: val.answer, score: val.score, feedback: val.feedback}});
 
     //function for handling input state changes
     function handleChange(e){
@@ -55,10 +55,14 @@ const Answer = ({questionid, val, docid}) => {
             });
     }
 
+    if (val.score !== ""){
+        return (null)
+    }
+
     //render the component
     return (
         <div>
-            <h1>QuestionId: {questionid}</h1>
+            <h1>Question: {val.question}</h1>
 
             <h1>Answer: {val.answer}</h1>
             

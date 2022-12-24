@@ -59,10 +59,14 @@ const Quiz = ({quizName}) => {
     Object.entries(AnswerSubmissions).forEach(([key, value]) => {
 
       //if the answer is correct we set the score to 1
-      if (value.answer === Questions[index].data.correctAnswer) {
-        value.score = 1;
-      } else {
-        value.score = 0;
+      if(Questions[index].data.questionType !== "ow"){
+        if (value.answer === Questions[index].data.correctAnswer) {
+          value.score = 1;
+          value.feedback = "Correct";
+        } else {
+          value.score = 0;
+          value.feedback = "Incorrect";
+        }
       }
 
       //we add the answer to the markedAnswers object
@@ -87,8 +91,8 @@ const Quiz = ({quizName}) => {
 
   function getSubmission(){
     //creating a reference to the AnswerSubmissions collection in the database
-    const docRef = doc(db, "AnswerSubmissions", userRecord.id + "_Maths");
-
+    const docRef = doc(db, nameOfQuiz + "Submissions", userRecord.id);
+    
     //getting the document from the database
     getDoc(docRef).then((doc) => {
       if (doc.exists()) {

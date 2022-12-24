@@ -17,6 +17,7 @@ function handleChange(e){
    //This is the object that will store all the form data
     //we make a object with defualt data (empty fields)
     const Answer = {
+      question: question.question,
       answer: value,
       feedback : "",
       score : "",
