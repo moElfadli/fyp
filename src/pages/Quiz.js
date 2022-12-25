@@ -92,7 +92,7 @@ const Quiz = ({quizName}) => {
   function getSubmission(){
     //creating a reference to the AnswerSubmissions collection in the database
     const docRef = doc(db, nameOfQuiz + "Submissions", userRecord.id);
-    
+
     //getting the document from the database
     getDoc(docRef).then((doc) => {
       if (doc.exists()) {
@@ -119,9 +119,7 @@ const Quiz = ({quizName}) => {
           Submit
         </button>
 
-        <button onClick={() => getSubmission() }>
-          Get Submission
-        </button>
+        
     </div>
   );
 };

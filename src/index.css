@@ -76,7 +76,6 @@
     /* // Science button */
   .btn6{
     @apply bg-yellow-500 hover:bg-yellow-700 shadow-xl shadow-gray-600/40 text-white text-2xl font-bold py-14 px-10 rounded
-
     ml-36
 
   }
@@ -91,5 +90,5 @@ background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-@apply bg-gray-500 dark:bg-gray-400;
+@apply bg-gray-800 dark:bg-gray-600;
 }

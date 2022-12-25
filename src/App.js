@@ -1,4 +1,4 @@
-
+// this where we import all the components and pages we need to render
 import React from 'react';
 import { BrowserRouter as Router,Route, Routes, Redirect} from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -10,6 +10,7 @@ import TeacherPage from './pages/TeacherPage';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
 import Submission from './pages/Submission';
+import ReviewSubmission from './pages/ReviewSubmission';
 
 
 
@@ -34,6 +35,8 @@ function App() {
             <Route path='/historySubmission' element={<Submission submissionName="HistorySubmissions"/>} />
             <Route path='/scienceSubmission' element={<Submission submissionName="ScienceSubmissions"/>} />
           
+            <Route path='/reviewMathsSubmission' element={<ReviewSubmission submissionTableName="MathsSubmissions"/>} />
+            <Route path='/reviewHistorySubmission' element={<ReviewSubmission submissionTableName="HistorySubmissions"/>} />
            
            
             

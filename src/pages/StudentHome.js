@@ -5,6 +5,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const HomePage = () => {
 
   const navigate = useNavigate();
+  // const getSubmission = () => {
+  //   navigate("/reviewSubmission")
+  // }
 
   return (
     <div>
@@ -22,12 +25,21 @@ const HomePage = () => {
           Geography
         </button>
 
+        
+
         <button className="btn4 btn-red" onClick={() => navigate("/historyQuestions")}>
           History
         </button>
+        <button onClick={() => navigate("/reviewHistorySubmission") }>
+          Review Submissions
+        </button>
+
         
         <button className="btn5 btn-red" onClick={() => navigate("/mathQuestions")}>
           Maths
+        </button>
+        <button onClick={() => navigate("/reviewMathsSubmission") }>
+          Review Submissions
         </button>
 
         <button className="btn6 btn-red" onClick={() => navigate("/scienceQuestions")}>

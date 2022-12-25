@@ -61,7 +61,7 @@ const Answer = ({questionid, val, docid}) => {
 
     //render the component
     return (
-        <div>
+        <div key={questionid}>
             <h1>Question: {val.question}</h1>
 
             <h1>Answer: {val.answer}</h1>

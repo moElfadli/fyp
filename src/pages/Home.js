@@ -5,27 +5,14 @@ import { UserAuth } from '../context/AuthContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
-
+// this is where we declare the functional component
 const Signin = () => {
+  // this is where we declare the variables we will use in the component
   const navigate = useNavigate();
+
   const { GoogleSignIn, Logout, userRecord } = UserAuth();
 
-// // handle google signin 
-//   const handleGoogleSignIn = async () => {
-   
-//     await GoogleSignIn()
-//     .then((result) => {
-//       if(result){
-
-        
-//     navigate("/StudentHome")
-//       }
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-//   };
-
+// asyn function is used to make the function asynchronous so that we can use the await keyword to wait for the promise to resolve
   async function SignOut(e){
     e.preventDefault();
     await Logout()
