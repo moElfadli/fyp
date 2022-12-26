@@ -51,35 +51,42 @@
  
   /* // Geography button */
   .btn3{
-    @apply bg-green-400 hover:bg-green-700 shadow-xl shadow-gray-600/40 text-white text-2xl font-bold py-14 px-6 rounded
+    @apply bg-green-400 hover:bg-green-700 shadow-xl shadow-gray-600/40 text-white font-bold py-6 px-10 rounded
 
-    ml-32
+   
 
   }
 
    /* // History button */
   .btn4{
-    @apply bg-gray-500 hover:bg-gray-700 shadow-xl shadow-gray-600/40 text-white text-2xl font-bold py-14 px-10 rounded
+    @apply bg-gray-500 hover:bg-gray-700 shadow-xl shadow-gray-600/40 text-white font-bold py-6 px-10 rounded;
 
-    ml-36
+    
 
   }
 
    /* // Maths button */
   .btn5{
-    @apply bg-red-500 hover:bg-red-700 shadow-xl shadow-gray-600/40 text-white text-2xl font-bold py-14 px-12 rounded
+    @apply bg-red-500 hover:bg-red-700 shadow-xl shadow-gray-600/40 text-white font-bold py-6 px-10 rounded;
 
-    ml-36
+ 
 
   }
 
     /* // Science button */
   .btn6{
-    @apply bg-yellow-500 hover:bg-yellow-700 shadow-xl shadow-gray-600/40 text-white text-2xl font-bold py-14 px-10 rounded
-    ml-36
+    @apply bg-orange-500 hover:bg-yellow-700 shadow-xl shadow-gray-600/40 text-white  font-bold py-6 px-10 rounded;
+   
 
   }
-
+    /* // Back Button */
+  .btnBack {
+   @apply text-center text-2xl text-gray-900 font-medium p-4 m-auto bg-red-50 rounded-md shadow-xl shadow-gray-600/40 ring ring-4 ring-gray-600 lg:max-w-4xl absolute -bottom-8 right-2;
+      }
+    /* // Review Submission Button */
+  .btnReview {
+    @apply bg-pink-200 hover:bg-pink-300 shadow-xl shadow-gray-600/40 text-gray-800 font-bold py-2 px-2 rounded-full transform hover:-translate-y-1 hover:scale-110;
+}
 }
 
 /* scrollbar */

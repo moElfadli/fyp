@@ -28,7 +28,7 @@ function handleChange(e){
  SetAnswerSubmissions({...AnswerSubmissions, [name]: Answer})
   
 
-  //gonna make a console log to see the state changes
+  //im gonna make a console log to see the state changes
   //will delte this after
   // console.log(answerSubmission);
   console.log(AnswerSubmissions);
