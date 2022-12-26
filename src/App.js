@@ -37,6 +37,9 @@ function App() {
           
             <Route path='/reviewMathsSubmission' element={<ReviewSubmission submissionTableName="MathsSubmissions"/>} />
             <Route path='/reviewHistorySubmission' element={<ReviewSubmission submissionTableName="HistorySubmissions"/>} />
+            <Route path='/reviewGeographySubmission' element={<ReviewSubmission submissionTableName="GeographySubmissions"/>} />
+            <Route path='/reviewScienceSubmission' element={<ReviewSubmission submissionTableName="ScienceSubmissions"/>} />
+            
            
            
             

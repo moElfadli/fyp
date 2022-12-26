@@ -5,6 +5,7 @@ import {useState} from 'react'
 // we use the variable question to render the question , score and question types
 const Question = ({question, questionId, SetAnswerSubmissions, AnswerSubmissions}) => {
 
+  //this is the state that will hold the submission answers
   const [checkedAnswer, setCheckedAnswer] = useState("");
 
 
@@ -23,11 +24,12 @@ function handleChange(e){
       score : "",
   }
 
+  //we update the state with the new value and the new submission object 
  SetAnswerSubmissions({...AnswerSubmissions, [name]: Answer})
   
 
   //gonna make a console log to see the state changes
-  //we will delte this after
+  //will delte this after
   // console.log(answerSubmission);
   console.log(AnswerSubmissions);
       
@@ -75,6 +77,7 @@ function handleChange(e){
           <label>{question.option4}</label>
           <input type="radio" name= {questionId} value={question.option4} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option4}/>
         </form>
+        
       </div>
     );
   }

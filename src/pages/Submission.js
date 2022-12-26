@@ -2,10 +2,13 @@ import {useState,useEffect} from 'react'
 import {getDocs,collection, query} from 'firebase/firestore';
 import { db } from "../firebase-config";
 import Answer from './Answer';
+import { useNavigate } from 'react-router-dom';
+
 
 //this is the component that will render the submissions. 
 //The submission name represents the name of the submission collection
 const Submission = ({submissionName}) => {
+    const navigate = useNavigate();
 
 // this is the state that will hold the submissions
 const [Submissions, SetSubmissions] = useState([]);
@@ -44,6 +47,9 @@ return (
             )
         })
     ))}
+     <button className="btn7 btn-red" onClick={() => navigate("/TeacherPage")}>
+          Back
+        </button>
     </div>
 );
 }
@@ -59,7 +65,10 @@ function renderSubmissions({index,docid,value}) {
                 )
                 })  
             }
+            
         </div>
+
+        
     )
 }
 

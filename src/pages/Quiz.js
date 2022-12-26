@@ -119,7 +119,9 @@ const Quiz = ({quizName}) => {
           Submit
         </button>
 
-        
+        <button className="btn7 btn-red" onClick={() => navigate("/StudentHome")}>
+          Back
+        </button>
     </div>
   );
 };

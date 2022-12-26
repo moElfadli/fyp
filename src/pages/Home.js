@@ -55,7 +55,7 @@ const Signin = () => {
       <h1 className='page-title'>Welcome to Online Quiz System</h1>
    
         
-      <h1 className='sign-text' >Sign in
+      <h1 className='sign-text' >Sign in or Register
         <br />
         <br />
       <div className='flex flex-row item-center justify-evenly'>

@@ -30,7 +30,9 @@ const TeacherPage = () => {
         </button>
     
        
-        
+        <button className="btn7 btn-red" onClick={() => navigate("/")}>
+          Back
+        </button>
            
         
     </div>
