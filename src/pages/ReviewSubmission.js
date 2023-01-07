@@ -4,13 +4,14 @@ import {doc, getDoc} from 'firebase/firestore';
 import { db } from "../firebase-config";
 import { UserAuth } from '../context/AuthContext';
 
-
+// this is a functional component that takes in the submissionTableName as a prop 
 const ReviewSubmission = ({submissionTableName}) => {
     
     const [Submission, SetSubmission] = useState([]);
     const { userRecord } = UserAuth();
 
 
+    // useeffect is a hook that runs when the component is mounted 
     useEffect(() => {
 
         // this function that will fetch the submissions from the database
@@ -30,7 +31,7 @@ const ReviewSubmission = ({submissionTableName}) => {
         }
 
         fetchData();
-    }, []); 
+    }, [submissionTableName,userRecord.id]); 
         
 
     return (
@@ -38,6 +39,7 @@ const ReviewSubmission = ({submissionTableName}) => {
             <h1>Review Submissions</h1>
             <div>
                 {
+                    // this is where we loop through the submissions object and render the submissions
                     Object.entries(Submission).map(([id_, submissionCollection]) => {
                         return (
                             renderSubmissions({id_,submissionCollection})
@@ -49,14 +51,15 @@ const ReviewSubmission = ({submissionTableName}) => {
     );
 }
 
+//this is where we use an if statement to check if the score and feedback are empty strings and if they are, we set them to "Score Pending..." and "Feedback Pending..."
 function renderSubmissions({id_, submissionCollection}) {
     
     if(submissionCollection.score === ""){
-        submissionCollection.score = "Not Graded"
+        submissionCollection.score = "Score Pending..."
     }
 
     if(submissionCollection.feedback === ""){
-        submissionCollection.feedback = "No Feedback Given"
+        submissionCollection.feedback = "Feedback Pending..."
     }
     
     return (

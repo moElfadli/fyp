@@ -16,7 +16,7 @@ function handleChange(e){
   const {name, value} = e.target;
   
    //This is the object that will store all the form data
-    //we make a object with defualt data (empty fields)
+    //we make a object with defualt data (empty fields) 
     const Answer = {
       question: question.question,
       answer: value,
@@ -28,26 +28,26 @@ function handleChange(e){
  SetAnswerSubmissions({...AnswerSubmissions, [name]: Answer})
   
 
-  //im gonna make a console log to see the state changes
-  //will delte this after
+ 
   // console.log(answerSubmission);
   console.log(AnswerSubmissions);
       
 }
 
+// if the question type is ow then we render the open ended question
   if (question.questionType === 'ow') {
     return (
-      <div className='questionStyle'>
+      <div className='bg-white rounded-lg p-6"'>
 
-        <h1>{question.question}</h1>
+        <h1 className='text-2xl font-bold mb-4 ml-6 '>{question.question}</h1>
            {/* adding styling to inputs */}
-           <div className="mb-4">
+           <div className="mb-4  ">
                 {/* adding label */}
-                <label className="form-label">
-                   Answer*
+                <label className="block mb-2 font-bold text-xl ">
+                  
                 </label>
                 {/* Input handles state change*/}
-                <input type="text" placeholder="Answer" className="w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                <input type="text" placeholder="Answer" className="w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4"
                 name= {questionId}
                 value={AnswerSubmissions.questionId}
                 onChange={(e) => handleChange(e)
@@ -58,25 +58,33 @@ function handleChange(e){
     );
   }
 
-  
+  // if the question type is mc then we render the multiple choice question
   else if (question.questionType === 'mc') {
     return (
-      <div className='questionStyle'>
-        <form>
-          <h1>{question.question}</h1>
+      <div className="bg-white rounded-lg  p-6">
+  <h1 className="text-2xl font-bold mb-4">{question.question}</h1>
 
-          <label>{question.option1}</label>
-          <input type="radio" name= {questionId} value={question.option1} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option1}/>
-          
-          <label>{question.option2}</label>
-          <input type="radio" name= {questionId} value={question.option2} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option2}/>
-          
-          <label>{question.option3}</label>
-          <input type="radio" name= {questionId} value={question.option3} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option3}/>
-          
-          <label>{question.option4}</label>
-          <input type="radio" name= {questionId} value={question.option4} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option4}/>
-        </form>
+  <form>
+    <label className="block mb-2 font-bold text-xl">
+      <input className="mr-2 leading-tight" type="radio" name= {questionId} value={question.option1} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option1}/>
+      {question.option1}
+    </label>
+    
+    <label className="block mb-2 font-bold text-xl">
+      <input className="mr-2 leading-tight" type="radio" name= {questionId} value={question.option2} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option2}/>
+      {question.option2}
+    </label>
+    
+    <label className="block mb-2 font-bold text-xl">
+      <input className="mr-2 leading-tight" type="radio" name= {questionId} value={question.option3} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option3}/>
+      {question.option3}
+    </label>
+    
+    <label className="block mb-2 font-bold text-xl">
+      <input className="mr-2 leading-tight" type="radio" name= {questionId} value={question.option4} onChange={(e) => {handleChange(e); setCheckedAnswer(e.target.value)}} checked={checkedAnswer === question.option4}/>
+      {question.option4}
+    </label>
+  </form>
         
       </div>
     );

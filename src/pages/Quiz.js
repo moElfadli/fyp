@@ -1,15 +1,16 @@
 import React from 'react';
 import {useState,useEffect} from 'react'
-import {doc, getDoc,getDocs,setDoc, collection, query} from 'firebase/firestore';
+import {doc, getDocs,setDoc, collection, query} from 'firebase/firestore';
 import { db } from "../firebase-config";
 import Question from './Question';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 
-// this is a functional component
+// this is a functional component that takes in the quizName as a prop
 const Quiz = ({quizName}) => {
 
+  // the split is used to remove the word "Quiz" from the quizName variable
   const nameOfQuiz = quizName.split("Quiz")[0];
 // this is where we will get the questions from the database
   const [Questions, SetQuestions] = useState([]);
@@ -40,7 +41,7 @@ const Quiz = ({quizName}) => {
         });
       
   
-      }, []);
+      }, [quizName]);
 
 
   // this function submits the answers to the database
@@ -89,33 +90,18 @@ const Quiz = ({quizName}) => {
     
   }
 
-  function getSubmission(){
-    //creating a reference to the AnswerSubmissions collection in the database
-    const docRef = doc(db, nameOfQuiz + "Submissions", userRecord.id);
-
-    //getting the document from the database
-    getDoc(docRef).then((doc) => {
-      if (doc.exists()) {
-          console.log("Document data:", doc.data());
-      } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-      }
-  }).catch((error) => {
-      console.log("Error getting document:", error);
-  });
-  }
 
 // we are mapping through the questions array and returning a question component for each question
   return (
     <div>
-      <h1>{nameOfQuiz} Quiz</h1>
+      <h1 className='text-6xl font-bold text-center text-gray-900   text-white font-bold py-4 px-10 rounded'>{nameOfQuiz} Quiz</h1>
+      <br />
      {Questions.map((question, index) => (
       <Question key={index} question={question.data} questionId = {question.id}
       AnswerSubmissions={AnswerSubmissions} SetAnswerSubmissions = {SetAnswerSubmissions} />  
       ))}
         
-        <button onClick={() => submitAnswers() }>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"onClick={() => submitAnswers() }>
           Submit
         </button>
 

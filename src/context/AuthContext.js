@@ -1,7 +1,7 @@
 import { useContext, createContext } from "react";
-import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth, db } from "../firebase-config";
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import {doc, getDoc,setDoc} from 'firebase/firestore';
 
 
@@ -9,10 +9,7 @@ const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
 
-    //user is the current user (firebase user)
-    // const [user, setUser] = useState(null);
-
-    //userRecord is the user's data from the database
+   
     const [userRecord, setRecord] = useState(JSON.parse(localStorage.getItem('userRecord')));
 
 
@@ -22,6 +19,7 @@ export const AuthContextProvider = ({children}) => {
             userData.id = auth.currentUser.uid
             localStorage.setItem("userRecord", JSON.stringify(userData));
             setRecord(userData)
+            console.log(userRecord)
     }
 
     //This creates a new user in the database if the user doesn't already exist
@@ -91,6 +89,8 @@ export const AuthContextProvider = ({children}) => {
     async function Logout() {
         await signOut(auth).then(() => {
             console.log("Signed Out");
+            localStorage.removeItem("userRecord");  
+            setRecord(null)
         }).catch((error) => {
             console.log(error);
         });

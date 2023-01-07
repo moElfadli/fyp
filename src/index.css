@@ -81,12 +81,17 @@
   }
     /* // Back Button */
   .btnBack {
-   @apply text-center text-2xl text-gray-900 font-medium p-4 m-auto bg-red-50 rounded-md shadow-xl shadow-gray-600/40 ring ring-4 ring-gray-600 lg:max-w-4xl absolute -bottom-8 right-2;
-      }
+   @apply hover:bg-red-500 text-center text-2xl text-gray-900 font-medium p-4 m-auto bg-red-50 rounded-md shadow-xl shadow-gray-600/40 ring ring-4 ring-gray-600 lg:max-w-4xl absolute -bottom-10 right-3
+   transform hover:-translate-y-1 hover:scale-110;
+  }
     /* // Review Submission Button */
   .btnReview {
     @apply bg-pink-200 hover:bg-pink-300 shadow-xl shadow-gray-600/40 text-gray-800 font-bold py-2 px-2 rounded-full transform hover:-translate-y-1 hover:scale-110;
 }
+.btnBack2 {
+  @apply hover:bg-red-500 text-center text-2xl text-gray-900 font-medium p-4 m-auto bg-red-50 rounded-md shadow-xl shadow-gray-600/40 ring ring-4 ring-gray-600 lg:max-w-4xl absolute bottom-3 right-3
+  transform hover:-translate-y-1 hover:scale-110;
+ }
 }
 
 /* scrollbar */
@@ -97,5 +102,5 @@ background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-@apply bg-gray-800 dark:bg-gray-600;
+@apply bg-gray-600 dark:bg-gray-600;
 }

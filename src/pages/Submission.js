@@ -30,7 +30,7 @@ useEffect(() => {
         .catch((error) => {
         console.log(error);
         });
-    }, []);
+    }, [submissionName]);
 
 
 
@@ -43,7 +43,7 @@ return (
         Object.entries(submission).map(([docid, value]) => {
             return (
                 //render each question/answer collection
-                renderSubmissions({index,docid,value})
+                renderSubmissions({index,docid,value,submissionName})
             )
         })
     ))}
@@ -55,13 +55,13 @@ return (
 }
 
 //this is where we loop through each question/answer collection in the submission document
-function renderSubmissions({index,docid,value}) {
+function renderSubmissions({index,docid,value,submissionName}) {
     return (
         <div>
            {  
             Object.entries(value).map(([questionid, val]) => {
                 return (
-                    <Answer key={index} questionid={questionid} val={val} docid={docid}/>
+                    <Answer key={index} questionid={questionid} val={val} docid={docid} submissionName={submissionName}/>
                 )
                 })  
             }
