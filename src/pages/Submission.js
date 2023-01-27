@@ -47,9 +47,10 @@ return (
             )
         })
     ))}
-     <button className="btn7 btn-red" onClick={() => navigate("/TeacherPage")}>
+     <button className="btnBack rounded-full py-2 px-10 hover:bg-red-dark fixed bottom-8 right-4 p-4" onClick={() => navigate("/TeacherPage")}>
           Back
         </button>
+        <br/>
     </div>
 );
 }

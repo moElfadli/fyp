@@ -59,8 +59,7 @@ const HomePage = () => {
         Review Science Submissions
       </button>
       <br />
-      <br />
-      <button className="btnBack rounded-full py-2 px-10 hover:bg-red-dark" onClick={() => navigate('/')}>
+      <button className="btnBack rounded-full py-2 px-10 hover:bg-red-dark fixed bottom-8 right-4 p-4" onClick={() => navigate('/')}>
         Back
       </button>
     </div>

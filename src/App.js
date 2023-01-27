@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Quiz from './pages/Quiz';
 import Submission from './pages/Submission';
 import ReviewSubmission from './pages/ReviewSubmission';
+import CreateQuestion from './pages/CreateQuestion';
 
 
 
@@ -18,7 +19,7 @@ function App() {
         <Navbar />
         <Router>
           <Routes>
-            
+           
             <Route path='/' element={<Home />} />
             <Route path='/TeacherPage' element={<TeacherPage />} />
             <Route path='/StudentHome' element={<StudentHome />} />
@@ -27,17 +28,25 @@ function App() {
             <Route path='/historyQuestions' element={<Quiz quizName="HistoryQuiz"/>} />
             <Route path='/scienceQuestions' element={<Quiz quizName="ScienceQuiz"/>} />
             
+            {/* this is the route for the submission page */}
             <Route path='/geographySubmission' element={<Submission submissionName="GeographySubmissions"/>} />
             <Route path='/mathSubmission' element={<Submission submissionName="MathsSubmissions"/>} />
             <Route path='/historySubmission' element={<Submission submissionName="HistorySubmissions"/>} />
             <Route path='/scienceSubmission' element={<Submission submissionName="ScienceSubmissions"/>} />
-          
+
+          {/* this is the route for the review submission page */}
             <Route path='/reviewMathsSubmission' element={<ReviewSubmission submissionTableName="MathsSubmissions"/>} />
             <Route path='/reviewHistorySubmission' element={<ReviewSubmission submissionTableName="HistorySubmissions"/>} />
             <Route path='/reviewGeographySubmission' element={<ReviewSubmission submissionTableName="GeographySubmissions"/>} />
             <Route path='/reviewScienceSubmission' element={<ReviewSubmission submissionTableName="ScienceSubmissions"/>} />
 
-           
+            {/* this is the route for the create question page */}
+            <Route path='/geographyQuestion' element={<CreateQuestion quizName="GeographyQuiz "/>} />
+            <Route path='/mathQuestion' element={<CreateQuestion quizName="MathsQuiz"/>} />
+            <Route path='/historyQuestion' element={<CreateQuestion quizName="HistoryQuiz"/>} />
+            <Route path='/scienceQuestion' element={<CreateQuestion quizName="ScienceQuiz"/>} />
+
+
            
             
           </Routes>

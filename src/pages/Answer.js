@@ -63,24 +63,28 @@ const Answer = ({questionid, val, docid, submissionName}) => {
 
     //render the component
     return (
-        // this removes the warning from mapping the component
-        <div key={questionid}>
-            <h2>Mark Questions</h2>
-            <h1>Question: {val.question}</h1>
-
-            <h1>Answer: {val.answer}</h1>
-
-            {/* this state is used to allow the teacher to chnage the score and see the change as they type */}
-            <h1>Score: {state[questionid].score}</h1>
-            <input type="text" placeholder="score" className="w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            name="score" value={state[questionid].score} onChange={(e) => handleChange(e)}/>
-
-            <h1>Feedback: {state[questionid].feedback}</h1>
-            <input type="text" placeholder="feedback" className="w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            name="feedback" value={state[questionid].feedback} onChange={(e) => handleChange(e)}/>
-
-            <button onClick={(e) => handleSubmit(e)}>Submit</button>
+        <div key={questionid} className="bg-white-200 p-4 flex flex-col">
+            <h2 className="text-lg font-medium mb-2">Mark Question</h2>
+            <div className="mb-4">
+                <h1 className="text-xl font-medium">Question: {val.question}</h1>
+                <h1 className="text-xl font-medium">Answer: {val.answer}</h1>
+            </div>
+            <div className="mb-4">
+                <h1 className="text-xl font-medium">Score: {state[questionid].score}</h1>
+                <input type="text" placeholder="score" className="w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                name="score" value={state[questionid].score} onChange={(e) => handleChange(e)}/>
+            </div>
+            <div className="mb-4">
+                <h1 className="text-xl font-medium">Feedback: {state[questionid].feedback}</h1>
+                <input type="text" placeholder="feedback" className="w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                name="feedback" value={state[questionid].feedback} onChange={(e) => handleChange(e)}/>
+                <br/>
+                <br/>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => handleSubmit(e)}>Submit</button>
+            </div>
         </div>
+            
+        
     )
 
 }

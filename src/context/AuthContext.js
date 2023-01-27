@@ -7,13 +7,14 @@ import {doc, getDoc,setDoc} from 'firebase/firestore';
 
 const AuthContext = createContext()
 
+// this is where we declare the functions that will be used in the AuthContext file
 export const AuthContextProvider = ({children}) => {
 
-   
+   // this is a useState hook that allows us to store the user's data in local storage
     const [userRecord, setRecord] = useState(JSON.parse(localStorage.getItem('userRecord')));
 
 
-//add user to local storage
+//this is a function that adds the user's data to local storage
     function addUserLocally(userData) {
             //add userid to user data
             userData.id = auth.currentUser.uid

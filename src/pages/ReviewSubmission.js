@@ -3,12 +3,18 @@ import {useState,useEffect} from 'react'
 import {doc, getDoc} from 'firebase/firestore';
 import { db } from "../firebase-config";
 import { UserAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 
 // this is a functional component that takes in the submissionTableName as a prop 
 const ReviewSubmission = ({submissionTableName}) => {
     
+    
+    // this is the state that will hold the submission answers
     const [Submission, SetSubmission] = useState([]);
+    // here we are using the UserAuth context to get the current user
     const { userRecord } = UserAuth();
+    const navigate = useNavigate();
 
 
     // useeffect is a hook that runs when the component is mounted 
@@ -36,7 +42,8 @@ const ReviewSubmission = ({submissionTableName}) => {
 
     return (
         <div>
-            <h1>Review Submissions</h1>
+            <h1 className="text-lg font-medium text-center mt-4">Review Submissions</h1>
+            <br/>
             <div>
                 {
                     // this is where we loop through the submissions object and render the submissions
@@ -46,6 +53,9 @@ const ReviewSubmission = ({submissionTableName}) => {
                         )
                     })
                 }
+                <button className="btnBack rounded-full py-2 px-10 hover:bg-red-dark fixed bottom-8 right-4 p-4" onClick={() => navigate("/StudentHome")}>
+          Back
+        </button>
             </div>
         </div>
     );
@@ -55,20 +65,32 @@ const ReviewSubmission = ({submissionTableName}) => {
 function renderSubmissions({id_, submissionCollection}) {
     
     if(submissionCollection.score === ""){
-        submissionCollection.score = "Score Pending..."
+        submissionCollection.score = "Pending..."
     }
 
     if(submissionCollection.feedback === ""){
-        submissionCollection.feedback = "Feedback Pending..."
+        submissionCollection.feedback = "Pending..."
     }
     
     return (
-        <div key ={id_}>
-            <h1>Question: {submissionCollection.question}</h1>
-            <h1>Answer: {submissionCollection.answer}</h1>
-            <h1>Score: {submissionCollection.score} </h1>
-            <h1>Feedback: {submissionCollection.feedback}</h1>
-        </div>
+        // key is a react prop that is used to identify each child in a list and in this case, we are using the id_ as the key
+        <div key={id_}>
+        <div className="bg-white p-6 rounded-lg shadow-md">
+    <h1 className='text-2xl font-medium '>Question: {submissionCollection.question}</h1>
+
+    <p className="text-black mb-4">Your answer:</p>
+    <p className="text-black mb-4">{submissionCollection.answer}</p>
+
+    <hr className="border-black-200" />
+    <div className="flex items-center mb-4">
+        <h1 className='text-lg font-medium text-orange-500 mr-2'>Score: {submissionCollection.score} </h1>
+    
+    </div>
+    
+    <p className="text-black mb-4">Feedback: {submissionCollection.feedback}</p>
+</div>
+</div>
+        
     )
 }
 

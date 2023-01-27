@@ -101,13 +101,17 @@ const Quiz = ({quizName}) => {
       AnswerSubmissions={AnswerSubmissions} SetAnswerSubmissions = {SetAnswerSubmissions} />  
       ))}
         
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"onClick={() => submitAnswers() }>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 ml-2"onClick={() => submitAnswers() }>
           Submit
         </button>
+        <br />
 
-        <button className="btn7 btn-red" onClick={() => navigate("/StudentHome")}>
+
+        <button className="btnBack rounded-full py-2 px-10 hover:bg-red-dark fixed bottom-8 right-4 p-4" onClick={() => navigate("/StudentHome")}>
           Back
         </button>
+    
+        <br />
     </div>
   );
 };

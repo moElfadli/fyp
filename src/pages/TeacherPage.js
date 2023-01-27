@@ -19,10 +19,23 @@ const TeacherPage = () => {
         </button>
         <br />
         <br />
+
+        
+        <button className="btn3 rounded-full py-4 px-10 hover:bg-blue-dark" onClick={() => navigate("/geographyQuestion") }>
+          Create Geography Questions
+        </button>
+        <br />
+        <br />
      
   
         <button className="btn4 rounded-full py-4 px-10 hover:bg-red-dark" onClick={() => navigate("/historySubmissions")}>
           History Submissions
+        </button>
+        <br />
+        <br />
+
+        <button className="btn4 rounded-full py-4 px-10 hover:bg-red-dark" onClick={() => navigate("/historyQuestion")}>
+          Create History Questions
         </button>
         <br />
         <br />
@@ -32,15 +45,30 @@ const TeacherPage = () => {
         </button>
         <br />
         <br />
+
+        <button className="btn5 rounded-full py-4 px-10 hover:bg-red-dark" onClick={() => navigate("/mathQuestion")}>
+          Create Maths Questions
+        </button>
+        <br />
+        <br />
   
         <button className="btn6 rounded-full py-4 px-10 hover:bg-red-dark" onClick={() => navigate("/scienceSubmission")}>
           Science Submissions
         </button>
+        <br />
+        <br />
+        
+     
+
+       <button className="btn6 rounded-full py-4 px-10 hover:bg-red-dark" onClick={() => navigate("/scienceQuestion")}>
+          Create Science Questions
+        </button>
       </div>
   
-      <button className="btnBack2 rounded-full py-2 px-10 hover:bg-red-dark" onClick={() => navigate("/")}>
+      <button className="btnBack rounded-full py-2 px-10 hover:bg-red-dark fixed bottom-8 right-4 p-4" onClick={() => navigate("/")}>
         Back
       </button>
+      <br />
     </div>
   );
   
