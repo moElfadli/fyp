@@ -7,7 +7,6 @@ import { db } from "../firebase-config";
 
 const MultpleChoice = ({quizName}) => {
     
-
 const [question, setQuestion] = useState({questionType:"mc"});
 
 function handleChange(e) {
@@ -25,8 +24,7 @@ async function handleSubmit (e){
     });
 
 }
-
-        
+   
         return (
             <div>
             <div className="bg-white rounded-lg  p-6">

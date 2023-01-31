@@ -22,7 +22,7 @@ const TeacherPage = () => {
 
         
         <button className="btn3 rounded-full py-4 px-10 hover:bg-blue-dark" onClick={() => navigate("/geographyQuestion") }>
-          Create Geography Questions
+          Create Geography Quiz
         </button>
         <br />
         <br />
@@ -35,7 +35,7 @@ const TeacherPage = () => {
         <br />
 
         <button className="btn4 rounded-full py-4 px-10 hover:bg-red-dark" onClick={() => navigate("/historyQuestion")}>
-          Create History Questions
+          Create History Quiz
         </button>
         <br />
         <br />
@@ -47,7 +47,7 @@ const TeacherPage = () => {
         <br />
 
         <button className="btn5 rounded-full py-4 px-10 hover:bg-red-dark" onClick={() => navigate("/mathQuestion")}>
-          Create Maths Questions
+          Create Maths Quiz
         </button>
         <br />
         <br />
@@ -61,7 +61,7 @@ const TeacherPage = () => {
      
 
        <button className="btn6 rounded-full py-4 px-10 hover:bg-red-dark" onClick={() => navigate("/scienceQuestion")}>
-          Create Science Questions
+          Create Science Quiz
         </button>
       </div>
   
