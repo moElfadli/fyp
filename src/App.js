@@ -9,6 +9,10 @@ import Quiz from './pages/Quiz';
 import Submission from './pages/Submission';
 import ReviewSubmission from './pages/ReviewSubmission';
 import CreateQuestion from './pages/CreateQuestion';
+import TeacherSubmission from './pages/TeacherSubmission';
+import TeacherCreateQuestions from './pages/TeacherCreateQuestions';
+import StudentQuiz from './pages/StudentQuiz';
+import StudentSubmissions from './pages/StudentSubmissions';
 
 
 
@@ -22,7 +26,11 @@ function App() {
            
             <Route path='/' element={<Home />} />
             <Route path='/TeacherPage' element={<TeacherPage />} />
+            <Route path='/TeacherCreateQuestions' element={<TeacherCreateQuestions />} />
+            <Route path='/TeacherSubmission' element={<TeacherSubmission />} />
             <Route path='/StudentHome' element={<StudentHome />} />
+            <Route path='/StudentQuiz' element={<StudentQuiz />} />
+            <Route path='/StudentSubmissions' element={<StudentSubmissions />} />
             <Route path='/mathQuestions' element={<Quiz quizName="MathsQuiz"/>} />
             <Route path='/geographyQuestions' element={<Quiz quizName="GeographyQuiz "/>} />
             <Route path='/historyQuestions' element={<Quiz quizName="HistoryQuiz"/>} />

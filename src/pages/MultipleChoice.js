@@ -7,6 +7,7 @@ import { db } from "../firebase-config";
 const MultpleChoice = ({ quizName }) => {
   // this is the state that will hold the question data
   const [question, setQuestion] = useState({ questionType: "mc" });
+  const NameOfQuiz = quizName.split("Quiz")[0];
 
   // this is the function that will handle the state changes of the form inputs
   function handleChange(e) {
@@ -29,11 +30,15 @@ const MultpleChoice = ({ quizName }) => {
 
   return (
     <div>
-      <div className="bg-white rounded-lg  p-6">
-        <h1 className="className='text-2xl font-bold mb-4 ml-6">
-          {" "}
+      <div className="bg-white rounded-lg p-6">
+        <h1 className="text-4xl font-bold mb-4 ml-6 text-center">Create {NameOfQuiz} Questions</h1>
+
+        <p className="text-1xl mb-20 mt-6 ml-6 text-center"> In this page you can create mutliple choice questions & written answers. 
+        You may add multiple questions of each type of question.</p>
+
+        <h2 className="className='text-2xl font-bold mb-4 ml-6">
           Create Multiple Choice Question
-        </h1>
+        </h2>
 
         <form>
           <label className="block mb-2 font-bold text-xl">

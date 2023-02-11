@@ -1,11 +1,10 @@
-import React from "react";
 import { useState } from "react";
 import { setDoc, getDoc, doc } from "firebase/firestore";
 import { db } from "../firebase-config";
 
 //this component is used to render the submission asnwers for each question
 //it takes in the question id, the answer object and the doc id of the submission document
-const Answer = ({ questionid, val, docid, submissionName }) => {
+const Answer = ({user, questionid, val, docid, submissionName}) => {
   //this is the state that will hold the submission answers
   const [state, SetState] = useState({
     [questionid]: {
@@ -15,6 +14,7 @@ const Answer = ({ questionid, val, docid, submissionName }) => {
       feedback: val.feedback,
     },
   });
+
 
   //function for handling input state changes
   function handleChange(e) {
@@ -32,7 +32,8 @@ const Answer = ({ questionid, val, docid, submissionName }) => {
 
     //this is the reference to the submission document using a variable with the quiz name and the submission id
     const submissionref = doc(db, submissionName, docid);
-
+    
+    
     let updated_doc = {};
 
     //this is where we update the submission document with the new answers.
@@ -47,17 +48,19 @@ const Answer = ({ questionid, val, docid, submissionName }) => {
           updated_doc[questionid] = state[questionid];
         }
       })
+  
       .then(() => {
         //update the document in the database
         setDoc(submissionref, updated_doc)
           .then(() => {
-            console.log("Document successfully written!");
+            alert("Mark has been submitted");
           })
           //catch any errors
           .catch((error) => {
             console.error("Error writing document: ", error);
           });
       })
+      
       //catch any errors
       .catch((error) => {
         console.log("Error getting document:", error);
@@ -72,13 +75,18 @@ const Answer = ({ questionid, val, docid, submissionName }) => {
   //render the component
   return (
     <div key={questionid} className="bg-white-200 p-4 flex flex-col">
-      <h2 className="text-lg font-medium mb-2">Mark Question</h2>
-      <div className="mb-4">
-        <h1 className="text-xl font-medium">Question: {val.question}</h1>
-        <h1 className="text-xl font-medium">Answer: {val.answer}</h1>
+      {/* <h2 className="text-4xl text-center font-medium mb-2">Mark Questions</h2> */}
+      <div  className="mb-4">
+        <div key={[docid]}  className="mb-4"></div>
+        <h1 className="text-base md:font-bold">Student Name: {user.name}</h1>
+        <img src={user.photo} alt="user" className="w-10 h-10 rounded-full" />
+      {/* <h1 className="text-base md:font-bold mb-4">Submission ID: {docid}</h1> */}
+      <hr className="border-black-500" />
+        <h1 className="text-2xl mt-10 font-medium">Question: {val.question}</h1>
+        <h1 className="text-2xl font-medium">Answer: {val.answer}</h1>
       </div>
       <div className="mb-4">
-        <h1 className="text-xl font-medium">
+        <h1 className="text-xl font-medium mr-">
           Score: {state[questionid].score}
         </h1>
         <input

@@ -30,7 +30,7 @@ const OneWord = ({ quizName }) => {
       <div className="bg-white rounded-lg  p-6">
         <h1 className="className='text-2xl font-bold mb-4 ml-6">
           {" "}
-          Create One Word Question
+          Create Written Answer Question
         </h1>
 
         <form>
@@ -63,7 +63,7 @@ const OneWord = ({ quizName }) => {
           </button>
 
           <button
-            className="btnBack rounded-full py-2 px-10 hover:bg-red-dark -mb-20"
+            className="btnBack rounded-full py-2 px-10 hover:bg-red-dark -mb-60"
             onClick={() => navigate("/TeacherPage")}
           >
             Back

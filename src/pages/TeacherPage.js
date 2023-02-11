@@ -7,88 +7,41 @@ const TeacherPage = () => {
   return (
     <div>
       <p className="mt-10 text-center text-6xl font-semibold">
-        Teacher & Marking Page
+        Create Questions & Review Submissions
+      </p>
+      <p className="mt-10 text-center text-2xl">
+        If you would like to create a new question, click the create questions button below. If you would like to review submissions, click the review submissions button below.
       </p>
       <br />
       <br />
-
+      <br />
+      <br />
       <div
         className="mx-auto"
         style={{
           width: "fit-content",
-          display: "flex",
-          flexDirection: "column",
+          display: "flex space-x-8",
+          flexDirection: "row",
         }}
       >
+        <div className= "flex space-x-10">
         <button
-          className="btn3 rounded-full py-4 px-10 hover:bg-blue-dark"
-          onClick={() => navigate("/geographySubmission")}
+          className="btn3 rounded-full text-4xl py-10 px-10 hover:bg-blue-dark"
+          onClick={() => navigate("/TeacherCreateQuestions")}
         >
-          Geography Submissions
+          Create Questions
         </button>
-        <br />
-        <br />
+       
 
         <button
-          className="btn3 rounded-full py-4 px-10 hover:bg-blue-dark"
-          onClick={() => navigate("/geographyQuestion")}
+           className="btn5 rounded-full text-4xl py-10 px-10 hover:bg-red-dark"
+          onClick={() => navigate("/TeacherSubmission")}
         >
-          Create Geography Quiz
+          Review Submissions
         </button>
-        <br />
-        <br />
 
-        <button
-          className="btn4 rounded-full py-4 px-10 hover:bg-red-dark"
-          onClick={() => navigate("/historySubmissions")}
-        >
-          History Submissions
-        </button>
-        <br />
-        <br />
-
-        <button
-          className="btn4 rounded-full py-4 px-10 hover:bg-red-dark"
-          onClick={() => navigate("/historyQuestion")}
-        >
-          Create History Quiz
-        </button>
-        <br />
-        <br />
-
-        <button
-          className="btn5 rounded-full py-4 px-10 hover:bg-red-dark"
-          onClick={() => navigate("/mathSubmission")}
-        >
-          Maths Submissions
-        </button>
-        <br />
-        <br />
-
-        <button
-          className="btn5 rounded-full py-4 px-10 hover:bg-red-dark"
-          onClick={() => navigate("/mathQuestion")}
-        >
-          Create Maths Quiz
-        </button>
-        <br />
-        <br />
-
-        <button
-          className="btn6 rounded-full py-4 px-10 hover:bg-red-dark"
-          onClick={() => navigate("/scienceSubmission")}
-        >
-          Science Submissions
-        </button>
-        <br />
-        <br />
-
-        <button
-          className="btn6 rounded-full py-4 px-10 hover:bg-red-dark"
-          onClick={() => navigate("/scienceQuestion")}
-        >
-          Create Science Quiz
-        </button>
+</div>
+        
       </div>
 
       <button

@@ -35,7 +35,7 @@ const ReviewSubmission = ({ submissionTableName }) => {
 
   return (
     <div>
-      <h1 className="text-lg font-medium text-center mt-4">
+      <h1 className="text-4xl font-medium text-center mt-4">
         Review Submissions
       </h1>
       <br />
