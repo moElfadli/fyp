@@ -4,13 +4,13 @@ import { db } from "../firebase-config";
 import Answer from "./Answer";
 import { useNavigate } from "react-router-dom";
 
-//this is the component that will render the submissions.
-//The submission name represents the name of the submission collection
+//The submission name parameter represents the name of the submission collection
 const Submission = ({ submissionName }) => {
   const navigate = useNavigate();
   
   // this is the state that will hold the submissions
   const [Submissions, SetSubmissions] = useState([]);
+  // this is the state that will hold the users
   const [users, SetUser] = useState({});
 
   // this is the function that will fetch the submissions from the database when the component mounts
@@ -51,7 +51,8 @@ const Submission = ({ submissionName }) => {
     });
 
     //TODO instead of getting all users from the database, we should only get the users that have submitted
- 
+
+ // this ignores the warning that we get when we use the useEffect hook
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submissionName]);
 

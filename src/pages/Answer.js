@@ -79,8 +79,6 @@ const Answer = ({user, questionid, val, docid, submissionName}) => {
       <div  className="mb-4">
         <div key={[docid]}  className="mb-4"></div>
         <h1 className="text-base md:font-bold">Student Name: {user.name}</h1>
-        <img src={user.photo} alt="user" className="w-10 h-10 rounded-full" />
-      {/* <h1 className="text-base md:font-bold mb-4">Submission ID: {docid}</h1> */}
       <hr className="border-black-500" />
         <h1 className="text-2xl mt-10 font-medium">Question: {val.question}</h1>
         <h1 className="text-2xl font-medium">Answer: {val.answer}</h1>
