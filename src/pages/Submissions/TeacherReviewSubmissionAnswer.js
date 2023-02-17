@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { setDoc, getDoc, doc } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { db } from "../../firebase-config";
+
 
 //this component is used to render the submission asnwers for each question
 //it takes in the question id, the answer object and the doc id of the submission document
-const Answer = ({user, questionid, val, docid, submissionName}) => {
+const TeacherReviewSubmissionAnswer = ({user, questionid, val, docid, quizName}) => {
   //this is the state that will hold the submission answers
   const [state, SetState] = useState({
     [questionid]: {
@@ -31,7 +32,7 @@ const Answer = ({user, questionid, val, docid, submissionName}) => {
     e.preventDefault();
 
     //this is the reference to the submission document using a variable with the quiz name and the submission id
-    const submissionref = doc(db, submissionName, docid);
+    const submissionref = doc(db, "Quiz", quizName, "Submissions", docid);
     
     
     let updated_doc = {};
@@ -121,4 +122,4 @@ const Answer = ({user, questionid, val, docid, submissionName}) => {
   );
 };
 
-export default Answer;
+export default TeacherReviewSubmissionAnswer;

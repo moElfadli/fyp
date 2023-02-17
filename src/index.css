@@ -9,6 +9,10 @@
     @apply ml-auto mr-4;
   } */
 
+.navbar-items {
+    @apply flex flex-col items-center justify-center
+    lg:ml-8 lg:my-0 my-7 text-xl cursor-pointer hover:border-b-2 hover:text-blue-400;
+  }
 
   .questionStyle {
     @apply text-2xl text-gray-900 font-medium

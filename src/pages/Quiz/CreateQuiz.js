@@ -1,23 +1,23 @@
 import React from "react";
 import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 
-const OneWord = ({ quizName }) => {
+const CreateQuiz = () => {
   const navigate = useNavigate();
-  const [question, setQuestion] = useState({ questionType: "ow" });
+  const [quiz, setQuiz] = useState();
 
   function handleChange(e) {
     // this handles the state changes of the form inputs and updates the state
     const { name, value } = e.target;
-    setQuestion({ ...question, [name]: value });
+    setQuiz(value);
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const quizref = collection(db, quizName);
-    await addDoc(quizref, { ...question })
+    const quizref = doc(db, "Quiz", quiz);
+    await setDoc(quizref, {"test": "test"} )
       .then(() => {
         alert("Question added successfully");
       })
@@ -30,12 +30,12 @@ const OneWord = ({ quizName }) => {
       <div className="bg-white rounded-lg  p-6">
         <h1 className="className='text-2xl font-bold mb-4 ml-6">
           {" "}
-          Create Written Answer Question
+          Create Quiz
         </h1>
 
         <form>
           <label className="block mb-2 font-bold text-xl">
-            Question:
+            Quiz Name / ID:
             <input
               onChange={(e) => handleChange(e)}
               type="text"
@@ -43,15 +43,9 @@ const OneWord = ({ quizName }) => {
               className="w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4"
             />
           </label>
-          <label className="block mb-2 font-bold text-xl">
-            Correct Answer:
-            <input
-              onChange={(e) => handleChange(e)}
-              type="text"
-              name="correctAnswer"
-              className="w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4"
-            />
-          </label>
+
+          
+
           <button
             onClick={(e) => handleSubmit(e)}
             type="submit"
@@ -74,4 +68,4 @@ const OneWord = ({ quizName }) => {
     </div>
   );
 };
-export default OneWord;
+export default CreateQuiz;

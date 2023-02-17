@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { getDocs, collection, query } from "firebase/firestore";
-import { db } from "../firebase-config";
-import Answer from "./Answer";
+import { db } from "../../firebase-config";
+import Answer from "./TeacherReviewSubmissionAnswer";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 //The submission name parameter represents the name of the submission collection
-const Submission = ({ submissionName }) => {
+const TeacherReviewSubmission = () => {
   const navigate = useNavigate();
+  const {quizName} = useParams();
   
   // this is the state that will hold the submissions
   const [Submissions, SetSubmissions] = useState([]);
@@ -30,7 +32,7 @@ const Submission = ({ submissionName }) => {
 
     // this function that will fetch the submissions from the database
     const fetchData = async () => {
-      const submissionref = query(collection(db, submissionName));
+      const submissionref = (collection(db, `Quiz/${quizName}/Submissions`));
       const snapshot = await getDocs(submissionref);
       //append each submission to the Submissions state with the doc id as the key
       snapshot.forEach((doc) => {
@@ -54,7 +56,7 @@ const Submission = ({ submissionName }) => {
 
  // this ignores the warning that we get when we use the useEffect hook
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [submissionName]);
+  }, []);
 
 
   return (
@@ -68,7 +70,7 @@ const Submission = ({ submissionName }) => {
             let user = users[docid];
             return (
               //render each question/answer collection
-              renderSubmissions({ index, docid, value, submissionName, user })
+              renderSubmissions({ index, docid, value, quizName, user })
             );
           })
         )
@@ -86,7 +88,7 @@ const Submission = ({ submissionName }) => {
 
 
 //this is where we loop through each question/answer collection in the submission document
-function renderSubmissions({ index, docid, value, submissionName, user }) {
+function renderSubmissions({ index, docid, value, quizName, user }) {
   return (
     <div>
       {Object.entries(value).map(([questionid, val]) => {
@@ -97,7 +99,7 @@ function renderSubmissions({ index, docid, value, submissionName, user }) {
             questionid={questionid}
             val={val}
             docid={docid}
-            submissionName={submissionName}
+            quizName={quizName}
           />
         );
       })}
@@ -105,4 +107,4 @@ function renderSubmissions({ index, docid, value, submissionName, user }) {
   );
 }
 
-export default Submission;
+export default TeacherReviewSubmission;

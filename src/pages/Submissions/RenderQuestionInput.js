@@ -8,6 +8,7 @@ const Question = ({
   SetAnswerSubmissions,
   AnswerSubmissions,
 }) => {
+  console.log(question);
   //this is the state that will hold the submission answers
   const [checkedAnswer, setCheckedAnswer] = useState("");
 

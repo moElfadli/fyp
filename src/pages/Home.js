@@ -2,6 +2,7 @@ import React from "react";
 import { GoogleButton } from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 // this is where we declare the functional component
 const Signin = () => {
@@ -32,9 +33,9 @@ const Signin = () => {
       if (result === true) {
         // this is where we check if the user is an admin and redirect them to the appropriate page
         if (userRecord.admin === true) {
-          navigate("/TeacherPage");
+          navigate("/ManageQuizzes")
         } else {
-          navigate("/StudentHome");
+          navigate("/StudentHomepage");
         }
       } else {
         console.log("failed signin");
@@ -43,7 +44,8 @@ const Signin = () => {
   }
 
   return (
-    <div>
+    <div className="bg-indigo-400 w-full h-screen">
+      <Navbar />
       <h1 className="page-title">Welcome to Online Quiz System</h1>
 
       <h1 className="sign-text">

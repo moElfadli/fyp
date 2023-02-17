@@ -1,12 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase-config";
-import { UserAuth } from "../context/AuthContext";
+import { db } from "../../firebase-config";
+import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // this is a functional component that takes in the submissionTableName as a prop
-const ReviewSubmission = ({ submissionTableName }) => {
+const StudentReviewSubmission = () => {
+  const { quizName } = useParams();
   // this is the state that will hold the submission answers
   const [Submission, SetSubmission] = useState([]);
   // here we are using the UserAuth context to get the current user
@@ -18,7 +20,7 @@ const ReviewSubmission = ({ submissionTableName }) => {
     // this function that will fetch the submissions from the database
     const fetchData = async () => {
       //creating a reference to the user's document in the database
-      const submissionRef = doc(db, submissionTableName, userRecord.id);
+      const submissionRef = doc(db, "Quiz", quizName, "Submissions", userRecord.id);
       //getting the user's document from the database
 
       const snapshot = await getDoc(submissionRef);
@@ -31,7 +33,7 @@ const ReviewSubmission = ({ submissionTableName }) => {
     };
 
     fetchData();
-  }, [submissionTableName, userRecord.id]);
+  }, [userRecord.id]);
 
   return (
     <div>
@@ -93,4 +95,4 @@ function renderSubmissions({ id_, submissionCollection }) {
   );
 }
 
-export default ReviewSubmission;
+export default StudentReviewSubmission;
