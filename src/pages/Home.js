@@ -32,9 +32,9 @@ const Signin = () => {
       if (result === true) {
         // this is where we check if the user is an admin and redirect them to the appropriate page
         if (userRecord.admin === true) {
-          navigate("/TeacherPage");
+          navigate("/ManageQuizzes")
         } else {
-          navigate("/StudentHome");
+          navigate("/StudentHomepage");
         }
       } else {
         console.log("failed signin");

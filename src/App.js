@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router,Route, Routes} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { AuthContextProvider } from './context/AuthContext';
-import TeacherPage from './pages/TeacherPage';
 import Home from './pages/Home';
 import ManageQuizzes from './pages/Quiz/ManageQuizzes';
 import CreateQuiz from './pages/Quiz/CreateQuiz';
@@ -42,18 +41,7 @@ function App() {
 
 
             <Route path='/' element={<Home />} />
-            <Route path='/TeacherPage' element={<TeacherPage />} />
-            {/* <Route path='/TeacherCreateQuestions' element={<TeacherCreateQuestions />} /> */}
-            {/* <Route path='/TeacherSubmission' element={<TeacherSubmission />} /> */}
-            {/* <Route path='/StudentQuiz' element={<StudentQuiz />} /> */}
-            {/* <Route path='/StudentSubmissions' element={<StudentSubmissions />} /> */}
-        
             
-            
-            
-
-
-           
             
           </Routes>
         </Router>

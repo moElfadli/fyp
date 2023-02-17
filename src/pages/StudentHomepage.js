@@ -24,10 +24,9 @@ const StudentHomepage = () => {
 
   return (
     <div className="text-center">
-      <p className="mt-4 text-5xl font-semibold">Create & Manage Quizzes</p>
+      <p className="mt-4 text-5xl font-semibold">Start Quiz & Review Submissions</p>
       <p className="mr-8 mt-10 text-center text-2xl">
-        In this page you can create and manage quizzes by adding questions or
-        deleting them.
+        In this page you can start a quiz and review your submissions.
       </p>
       <br />
       <div className="flex flex-row">
