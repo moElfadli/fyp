@@ -1,38 +1,48 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { doc, getDocs, setDoc, collection, query } from "firebase/firestore";
-import { db } from "../firebase-config";
-import Question from "./Question";
-import { UserAuth } from "../context/AuthContext";
+import { db } from "../../firebase-config";
+import Question from "./RenderQuestionInput";
+import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // this is a functional component that takes in the quizName as a prop
-const Quiz = ({ quizName }) => {
-  // the split is used to remove the word "Quiz" from the quizName variable
-  const nameOfQuiz = quizName.split("Quiz")[0];
+const StudentSubmission = () => {
+  
+  const { quizName } = useParams();
   // this is where we will get the questions from the database
   const [Questions, SetQuestions] = useState([]);
   const [AnswerSubmissions, SetAnswerSubmissions] = useState([]);
   const { userRecord } = UserAuth();
   const navigate = useNavigate();
 
-  // useffect is a hook that runs when the component is mounted/triggers when the state changes
-  useEffect(() => {
-    // this function fetches data from the database/quiz collection
-    const fetchData = async () => {
-      //creating a reference to the quiz collection in the database
-      const quizref = query(collection(db, quizName));
-      //getting all the documents from the quiz collection
-      const snapshot = await getDocs(quizref);
-      // we are looping through the documents in the quiz collection
-      snapshot.forEach((doc) => {
-        // we are appending the data to the question array
-        SetQuestions((Questions) => [
-          ...Questions,
-          { id: doc.id, data: doc.data() },
-        ]);
-      });
-    };
+useEffect(() => {
+    // this function fetches the data from the database
+    async function fetchData() {
+        // creating a reference to the Questions collection in the database
+        const quizref = collection(db, `Quiz/${quizName}/Questions`);
+        // getting the data from the database
+        const snapshot = await getDocs(quizref);
+        // looping through the data and adding it to the Questions array
+        snapshot.forEach((doc) => {
+            SetQuestions((Questions) => [
+                ...Questions,
+                { id: doc.id, data: doc.data() },
+            ]);
+        });
+        // creating a reference to the Submissions collection in the database
+        const submissionRef = collection(db, `Quiz/${quizName}/Submissions/${userRecord.id}`);
+        // getting the data from the database
+        const submissionSnapshot = await getDocs(submissionRef);
+        // looping through the data and adding it to the AnswerSubmissions array
+        submissionSnapshot.forEach((doc) => {
+            SetAnswerSubmissions((AnswerSubmissions) => [
+                ...AnswerSubmissions,
+                { id: doc.id, data: doc.data() },
+            ]);
+        });
+    }
 
     // we are calling the fetchData function
     fetchData()
@@ -45,7 +55,7 @@ const Quiz = ({ quizName }) => {
   // this function submits the answers to the database
   function submitAnswers() {
     //creating a reference to the AnswerSubmissions collection in the database
-    const docRef = doc(db, nameOfQuiz + "Submissions", userRecord.id);
+    const docRef = doc(db, "Quiz", quizName, "Submissions", userRecord.id);
 
     //creating a new object to store the marked answers
     var markedAnswers = {};
@@ -88,7 +98,7 @@ const Quiz = ({ quizName }) => {
   return (
     <div>
       <h1 className="text-6xl font-bold text-center text-gray-900   text-white font-bold py-4 px-10 rounded">
-        {nameOfQuiz} Quiz
+        Quiz
       </h1>
       <br />
 
@@ -123,4 +133,4 @@ const Quiz = ({ quizName }) => {
     </div>
   );
 };
-export default Quiz;
+export default StudentSubmission;

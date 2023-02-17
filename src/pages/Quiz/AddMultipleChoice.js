@@ -1,13 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { db } from "../../firebase-config";
+import { useParams } from "react-router-dom";
 
 // this is a functional component that will render the multiple choice question form
-const MultpleChoice = ({ quizName }) => {
+const AddMultipleChoice = () => {
   // this is the state that will hold the question data
   const [question, setQuestion] = useState({ questionType: "mc" });
-  const NameOfQuiz = quizName.split("Quiz")[0];
+  const { quizName } = useParams();
+  
 
   // this is the function that will handle the state changes of the form inputs
   function handleChange(e) {
@@ -17,7 +19,7 @@ const MultpleChoice = ({ quizName }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const quizref = collection(db, quizName);
+    const quizref = collection(db, "Quiz", quizName, "Questions");
     // here we add the question to the database b
     await addDoc(quizref, { ...question })
       .then(() => {
@@ -31,7 +33,7 @@ const MultpleChoice = ({ quizName }) => {
   return (
     <div>
       <div className="bg-white rounded-lg p-6">
-        <h1 className="text-4xl font-bold mb-4 ml-6 text-center">Create {NameOfQuiz} Questions</h1>
+        <h1 className="text-4xl font-bold mb-4 ml-6 text-center">Create {quizName} Questions</h1>
 
         <p className="text-1xl mb-20 mt-6 ml-6 text-center"> In this page you can create mutliple choice questions & written answers. 
         You may add multiple questions of each type of question.</p>
@@ -115,4 +117,4 @@ const MultpleChoice = ({ quizName }) => {
     </div>
   );
 };
-export default MultpleChoice;
+export default AddMultipleChoice;
