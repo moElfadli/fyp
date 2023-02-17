@@ -22,8 +22,10 @@ function App() {
   return (
     <div>
       <AuthContextProvider>
-        <Navbar />
+       
         <Router>
+        <Navbar />
+    
           <Routes>
             <Route path='/ShowQuestions/:quizName' element={<ShowQuestions />} />
             <Route path='/CreateQuestions/:quizName' element={<CreateQuestions />} />

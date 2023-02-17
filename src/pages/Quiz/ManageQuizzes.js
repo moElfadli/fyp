@@ -23,8 +23,9 @@ const ManageQuizzes = () => {
   }, []);
 
   return (
-    <div className="text-center">
-      <p className="mt-4 text-5xl font-semibold">
+    
+    <div className="text-center mt-32">
+      <p className="mb-32 text-5xl font-semibold">
         Create & Manage Quizzes
       </p>
       <p className="mr-8 mt-10 text-center text-2xl">

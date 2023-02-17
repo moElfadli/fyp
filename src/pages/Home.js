@@ -2,6 +2,7 @@ import React from "react";
 import { GoogleButton } from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 // this is where we declare the functional component
 const Signin = () => {
@@ -43,7 +44,8 @@ const Signin = () => {
   }
 
   return (
-    <div>
+    <div className="bg-indigo-400 w-full h-screen">
+      <Navbar />
       <h1 className="page-title">Welcome to Online Quiz System</h1>
 
       <h1 className="sign-text">
