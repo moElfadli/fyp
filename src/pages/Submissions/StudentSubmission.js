@@ -1,15 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { doc, getDocs, setDoc, collection, query } from "firebase/firestore";
+import { doc, getDocs, setDoc, collection} from "firebase/firestore";
 import { db } from "../../firebase-config";
 import Question from "./RenderQuestionInput";
 import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
+
 // this is a functional component that takes in the quizName as a prop
 const StudentSubmission = () => {
-  
   const { quizName } = useParams();
   // this is where we will get the questions from the database
   const [Questions, SetQuestions] = useState([]);
@@ -50,11 +50,11 @@ useEffect(() => {
       .catch((error) => {
         console.log(error);
       });
-  }, [quizName]);
+  }, [quizName, userRecord.id]);
 
   // this function submits the answers to the database
   function submitAnswers() {
-    //creating a reference to the AnswerSubmissions collection in the database
+    //this creates a reference to the submissions collection which is inside each quiz sub collection
     const docRef = doc(db, "Quiz", quizName, "Submissions", userRecord.id);
 
     //creating a new object to store the marked answers
@@ -87,7 +87,7 @@ useEffect(() => {
     setDoc(docRef, markedAnswers)
       .then(() => {
         //redirecting to the student home page
-        navigate("/StudentHome");
+        navigate("/StudentHomePage");
       })
       .catch((error) => {
         alert(error);
@@ -96,9 +96,9 @@ useEffect(() => {
 
   // we are mapping through the questions array and returning a question component for each question
   return (
-    <div>
-      <h1 className="text-6xl font-bold text-center text-gray-900   text-white font-bold py-4 px-10 rounded">
-        Quiz
+    <div className="min-h-screen bg-gray-100 mt-20 px-4 sm:px-6 lg:px-8">
+      <h1 className="text-6xl font-bold text-center text-gray-900 py-4 px-10 rounded">
+      {quizName} Quiz
       </h1>
       <br />
 
@@ -124,7 +124,7 @@ useEffect(() => {
       <button
         className="btnBack rounded-full py-2 px-10 hover:bg-red-dark 
         fixed bottom-8 right-4 p-4"
-        onClick={() => navigate("/StudentHome")}
+        onClick={() => navigate("/StudentHomePage")}
       >
         Back
       </button>

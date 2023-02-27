@@ -36,8 +36,8 @@ const StudentReviewSubmission = () => {
   }, [userRecord.id]);
 
   return (
-    <div>
-      <h1 className="text-4xl font-medium text-center mt-4">
+    <div className="min-h-screen bg-gray-100 mt-20 px-4 ">
+      <h1 className="text-6xl font-bold text-gray-800 p-4 text-center">
         Review Submissions
       </h1>
       <br />
@@ -50,7 +50,7 @@ const StudentReviewSubmission = () => {
         }
         <button
           className="btnBack rounded-full py-2 px-10 hover:bg-red-dark fixed bottom-8 right-4 p-4"
-          onClick={() => navigate("/StudentHome")}
+          onClick={() => navigate("/StudentHomePage")}
         >
           Back
         </button>

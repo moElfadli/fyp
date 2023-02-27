@@ -30,12 +30,13 @@ const AddOneWord = () => {
     }
 
     return (
-        <div>
-            <div className="bg-white rounded-lg  p-6">
-                <h1 className="className='text-2xl font-bold mb-4 ml-6">
-                    {" "}
+      
+        <div className="flex flex-col items-center justify-center h-screen bg-gray-100  mt-[5rem]   ">
+         <h1 className="text-6xl font-bold text-gray-800 -mt-32">
+                   
                     Create Written Answer Question
                 </h1>
+                <p className="text-1xl mb-20 mt-6 ml-6 text-center"> In this section you can create Written Answer Questions for your quiz. You can add as many questions as you want. </p>
 
                 <form>
                     <label className="block mb-2 font-bold text-xl">
@@ -60,16 +61,17 @@ const AddOneWord = () => {
                         onClick={(e) => handleSubmit(e)}
                         type="submit"
                         value="Submit"
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-44 rounded"
                     >
                         Submit
                     </button>
-                    <button  onClick={() => navigate("/")} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button  onClick={() => navigate(`/ShowQuestions/${quizName}`)} className="btnBack rounded-full py-2 px-10 hover:bg-red-dark 
+            fixed bottom-8 right-4 p-4">
                         Back
                     </button>
                 </form>
             </div>
-        </div>
+       
     );
 }
 

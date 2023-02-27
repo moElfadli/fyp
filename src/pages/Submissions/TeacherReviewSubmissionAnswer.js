@@ -75,11 +75,10 @@ const TeacherReviewSubmissionAnswer = ({user, questionid, val, docid, quizName})
 
   //render the component
   return (
-    <div key={questionid} className="bg-white-200 p-4 flex flex-col">
-      {/* <h2 className="text-4xl text-center font-medium mb-2">Mark Questions</h2> */}
+    <div key={questionid} className="mt-[5rem] bg-white-200 p-4 flex flex-col">
       <div  className="mb-4">
         <div key={[docid]}  className="mb-4"></div>
-        <h1 className="text-base md:font-bold">Student Name: {user.name}</h1>
+        <h1 className="text-base md:font-bold">Student Name: {user?.name}</h1>
       <hr className="border-black-500" />
         <h1 className="text-2xl mt-10 font-medium">Question: {val.question}</h1>
         <h1 className="text-2xl font-medium">Answer: {val.answer}</h1>

@@ -23,31 +23,37 @@ const StudentHomepage = () => {
   }, []);
 
   return (
-    <div className="text-center">
-      <p className="mt-4 text-5xl font-semibold">Start Quiz & Review Submissions</p>
-      <p className="mr-8 mt-10 text-center text-2xl">
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100
+     mt-[5rem] ">
+      <h1 className="text-4xl font-bold text-gray-800 mb-10">Start a Quiz & Review Submissions</h1>
+      <p className="mx-auto mb-12 text-center  text-lg text-gray-600">
         In this page you can start a quiz and review your submissions.
       </p>
       <br />
-      <div className="flex flex-row">
+      <div
+        className="grid grid-cols-2 md:grid-cols-2 gap-12 " 
+      >
         {/* //map through the quiz collections and return a button for each quiz */}
         {QuizCollections.map((quiz) => {
           return (
             // the key is the id of the quiz
-            <div key={quiz.id} className="flex flex-row">
+            <div key={quiz.id} className="p-6 bg-white rounded-lg shadow-xl">
               <button
                 onClick={() => navigate(`/StudentSubmission/${quiz.id}`)}
-                className="btn3 mt-20 rounded-full text-4xl py-8 px-8 hover:bg-blue-dark"
+                className="block w-full py-4 px-8 text-lg font-semibold text-white bg-green-600
+                rounded-full hover:bg-green-700"
               >
               
-                Start Quiz {quiz?.id}
+                Start {quiz?.id} Quiz 
               </button>
+             
               <button
                 onClick={() => navigate(`/StudentReviewSubmission/${quiz.id}`)}
-                className="btn3 mt-20 rounded-full text-4xl py-8 px-8 hover:bg-blue-dark"
+                className="block w-full mt-4 py-4 px-4 text-lg font-semibold text-white  bg-blue-600
+                rounded-full hover:bg-blue-700"
               >
               
-                Review Submission {quiz?.id}
+                Review {quiz?.id} Submission 
               </button>
             </div>
           );

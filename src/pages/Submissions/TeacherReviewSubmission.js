@@ -54,14 +54,13 @@ const TeacherReviewSubmission = () => {
 
     //TODO instead of getting all users from the database, we should only get the users that have submitted
 
- // this ignores the warning that we get when we use the useEffect hook
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+ 
   }, []);
 
 
   return (
-    <div className="sumbissionStyle">
-      <h2 className="text-4xl text-center font-medium mb-2">Mark Questions</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 mt-20 px-4 sm:px-6 lg:px-8">
+    <h1 className="text-6xl font-bold text-gray-800 p-4">Mark Questions</h1>
       {
         // this where we loop through the submissions array which contains all the submissions and their doc ids
         Submissions.map((submission, index) =>
@@ -77,7 +76,7 @@ const TeacherReviewSubmission = () => {
       }
       <button
         className="btnBack rounded-full py-2 px-10 hover:bg-red-dark fixed bottom-8 right-4 p-4"
-        onClick={() => navigate("/TeacherPage")}
+        onClick={() => navigate(`/ShowQuestions/${quizName}`)}
       >
         Back
       </button>
