@@ -90,7 +90,7 @@ const TeacherReviewSubmissionAnswer = ({user, questionid, val, docid, quizName})
         <input
           type="text"
           placeholder="score"
-          className="w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          className="score-teacher"
           name="score"
           value={state[questionid].score}
           onChange={(e) => handleChange(e)}
@@ -103,7 +103,7 @@ const TeacherReviewSubmissionAnswer = ({user, questionid, val, docid, quizName})
         <input
           type="text"
           placeholder="feedback"
-          className="w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          className="feedback-teacher"
           name="feedback"
           value={state[questionid].feedback}
           onChange={(e) => handleChange(e)}

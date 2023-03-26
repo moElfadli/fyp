@@ -7,7 +7,7 @@ import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { GoogleSignIn, Logout, userRecord } = UserAuth();
+  const { Logout, userRecord } = UserAuth();
 
   useEffect(() => {
     if (userRecord !== null) {
@@ -17,36 +17,25 @@ const Navbar = () => {
       } else {
         navigate("/StudentHomepage");
       }
-    } else {
-      navigate("/");
     }
+    // this line is used to disable the warning that appears when we use the useEffect hook as we are not using the navigate function in the dependency array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userRecord]);
 
-  // asyn function is used to make the function asynchronous so that we can use the await keyword to wait for the promise to resolve
   async function SignOut(e) {
     // this prevents the page from reloading when the button is clicked
     e.preventDefault();
     await Logout()
       .then(() => {
-        console.log("Signed Out");
+        console.log("Signed Out") 
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  // async function is used to make the function asynchronous so that we can use the await keyword to wait for the promise to resolve
-  async function RegisterWithGoogle(e) {
-    e.preventDefault();
-    // this is where we call the GoogleSignIn function from the AuthContext file and wait for the promise to resolve
-    await GoogleSignIn().then((result) => {
-      console.log(result);
-      console.log(userRecord);
-      if (result === false) {
-        console.log("failed signin");
-      }
-    });
-  }
+
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
       <div className="lg:flex items-center justify-between bg-white py-4 md:px-10 px-7">
@@ -60,8 +49,9 @@ const Navbar = () => {
           {!userRecord ? (
             <div className="hidden md:flex items-center space-x-5 font-medium text-gray-600">
               <li
-                onClick={(e) => {
-                  RegisterWithGoogle(e);
+              onClick={(e) => { 
+                navigate("/Login");
+
                 }}
                 className="navbar-items"
               >
@@ -69,8 +59,9 @@ const Navbar = () => {
                 Login
               </li>
               <li
-                onClick={(e) => {
-                  RegisterWithGoogle(e);
+               onClick={(e) => {
+                navigate("/Register");
+               
                 }}
                 className="navbar-items"
               >

@@ -1,8 +1,9 @@
 import { useContext, createContext } from "react";
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase-config";
 import React, {useState} from 'react';
 import {doc, getDoc,setDoc} from 'firebase/firestore';
+
 
 
 const AuthContext = createContext()
@@ -23,9 +24,10 @@ export const AuthContextProvider = ({children}) => {
             console.log(userRecord)
     }
 
+
     //This creates a new user in the database if the user doesn't already exist
     //otherwise we fetch the user's data from the database
-    async function createUser() {
+    async function createUser(username) {
         //assign the current user to a variable
         let currentUser = auth.currentUser;
 
@@ -47,9 +49,10 @@ export const AuthContextProvider = ({children}) => {
         else {
         // create a new user
             try {
-                //creating a new user object
+                //creating a new user object 
                 const localUser = {
-                    name: currentUser.displayName,
+                    // if the user didn't provide a username, use their display name
+                    name: {username} ? username : currentUser.displayName,
                     admin: false,
                     photo: currentUser.photoURL,
                 }
@@ -57,7 +60,7 @@ export const AuthContextProvider = ({children}) => {
                 // creates a new user with the user's uid as the doc id
                 await setDoc(userRef,  {...localUser})
                 //console log the name of the user that was created
-                console.log(currentUser.displayName + " created")
+                console.log(currentUser.displayName + "created")
                 
                 //add user to local storage
                 addUserLocally({...localUser})
@@ -70,20 +73,68 @@ export const AuthContextProvider = ({children}) => {
         }
     }
 
+// here are the steps for registering a user with email username and password
+async function emailRegisteration(email,username,password){
+    
+    // here we decalre a 
+  let success = false;
+  // then we call the createUserWithEmailAndPassword function from firebase 
+    await createUserWithEmailAndPassword(auth, email, password)
+    // if the user was created successfully, we call the createUser function
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        success = true;
+        // ...
+        console.log(user)
+       
+        createUser(username)
+    })
+    .catch((error) => {
+       console.log(error)
+        // ..
+    });
+    // return the success variable so we can check if the user was created
+    return success;
+}
+// this function is responsible for logging in a user
+async function emailLogin(email,password){
+
+    let success = false;
+    await signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed in
+       
+        success = true;
+        
+        // then we call the createUser function to add the user to the database
+        createUser(null)
+    })
+    .catch((error) => {
+        
+   console.log(error)
+    });
+    return success;
+}
+
     async function GoogleSignIn() {
 
         const provider = new GoogleAuthProvider();
+        
        
         await signInWithPopup(auth, provider)
-        .then(result => {
-            // on success, try create a new user
-            createUser()
+        .then( result => {
+         
+          // 
+            createUser(null)
         })
 
         .catch((error) => {
             console.log(error);
             return false;
         });
+       
+       
         return true;
     }
 
@@ -98,7 +149,7 @@ export const AuthContextProvider = ({children}) => {
     }
 
     return (
-        <AuthContext.Provider value={{ GoogleSignIn,userRecord,Logout}}>
+        <AuthContext.Provider value={{ GoogleSignIn,userRecord,Logout,emailRegisteration, emailLogin}}>
             {children}
         </AuthContext.Provider>
     )

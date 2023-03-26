@@ -43,7 +43,7 @@ const Question = ({
           <input
             type="text"
             placeholder="Answer"
-            className="w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4"
+            className="oneWord-question-input"
             name={questionId}
             value={AnswerSubmissions.questionId}
             onChange={(e) => handleChange(e)}

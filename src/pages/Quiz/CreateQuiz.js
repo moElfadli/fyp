@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const CreateQuiz = () => {
 
   function handleChange(e) {
  // this handles the change in the input field and sets the state to the value of the input field. in this case the value of the input field is the name of the quiz
-    const { name, value } = e.target;
+    const { value } = e.target;
     setQuiz(value);
   }
 
@@ -42,7 +42,7 @@ const CreateQuiz = () => {
               onChange={(e) => handleChange(e)}
               type="text"
               name="question"
-              className="w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4"
+              className="create-quiz"
             />
           </label>
 

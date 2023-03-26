@@ -13,6 +13,8 @@ import StudentSubmission from './pages/Submissions/StudentSubmission';
 import TeacherReviewSubmission from './pages/Submissions/TeacherReviewSubmission';
 import StudentReviewSubmission from './pages/Submissions/StudentReviewSubmission';
 import StudentHomepage from './pages/StudentHomepage';
+import Register from './pages/Authentication/Register';
+import Login from './pages/Authentication/Login';
 
 
 
@@ -34,6 +36,8 @@ function App() {
             <Route path='/TeacherReviewSubmission/:quizName' element={<TeacherReviewSubmission />} />
             <Route path='/StudentReviewSubmission/:quizName' element={<StudentReviewSubmission />} />
             <Route path='/StudentHomepage' element={<StudentHomepage />} />
+            <Route path='/Register' element={<Register />} />
+            <Route path='/Login' element={<Login />} />
         
          
 

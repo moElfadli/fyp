@@ -20,6 +20,7 @@ const StudentHomepage = () => {
       );
     };
     getQuizCollections();
+   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -48,6 +49,7 @@ const StudentHomepage = () => {
               </button>
              
               <button
+              
                 onClick={() => navigate(`/StudentReviewSubmission/${quiz.id}`)}
                 className="block w-full mt-4 py-4 px-4 text-lg font-semibold text-white  bg-blue-600
                 rounded-full hover:bg-blue-700"

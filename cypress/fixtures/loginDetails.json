@@ -1,0 +1,12 @@
+{
+  "testUser": {
+    "displayName": "CypressTestUser",
+    "email": "test@test.com",
+    "password": "test@test.com"
+  },
+  "testAdmin":{
+    "displayName": "CypressTestAdminUser",
+    "email": "testadmin@test.com",
+    "password": "testadmin@test.com"
+  }
+}

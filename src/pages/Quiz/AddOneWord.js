@@ -45,7 +45,7 @@ const AddOneWord = () => {
                             onChange={(e) => handleChange(e)}
                             type="text"
                             name="question"
-                            className="w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4"
+                            className="create-ow-question"
                         />
                     </label>
                     <label className="block mb-2 font-bold text-xl">
@@ -54,7 +54,7 @@ const AddOneWord = () => {
                             onChange={(e) => handleChange(e)}
                             type="text"
                             name="correctAnswer"
-                            className="w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4"
+                            className="create-answer"
                         />
                     </label>
                     <button

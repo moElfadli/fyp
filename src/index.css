@@ -8,7 +8,25 @@
   /* .navbar-icon:first {
     @apply ml-auto mr-4;
   } */
+.oneWord-question-input {
+  @apply w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4;
+}
 
+.create-quiz {
+  @apply w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4;
+}
+.create-ow-question{
+  @apply w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4;
+}
+.correct-answer{
+  @apply w-1/2 h-10 px-2 border-2  rounded-lg focus:outline-none focus:border-blue-500  p-6 ml-4;
+}
+.score-teacher {
+  @apply w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500;
+}
+.feedback-teacher {
+  @apply w-1/2 h-10 px-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500;
+}
 .navbar-items {
     @apply flex flex-col items-center justify-center
     lg:ml-8 lg:my-0 my-7 text-xl cursor-pointer hover:border-b-2 hover:text-blue-400;
