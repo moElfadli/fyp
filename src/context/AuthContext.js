@@ -1,5 +1,5 @@
 import { useContext, createContext } from "react";
-import { GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {  signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase-config";
 import React, {useState} from 'react';
 import {doc, getDoc,setDoc} from 'firebase/firestore';
@@ -117,26 +117,6 @@ async function emailLogin(email,password){
     return success;
 }
 
-    async function GoogleSignIn() {
-
-        const provider = new GoogleAuthProvider();
-        
-       
-        await signInWithPopup(auth, provider)
-        .then( result => {
-         
-          // 
-            createUser(null)
-        })
-
-        .catch((error) => {
-            console.log(error);
-            return false;
-        });
-       
-       
-        return true;
-    }
 
     async function Logout() {
         await signOut(auth).then(() => {
@@ -149,7 +129,7 @@ async function emailLogin(email,password){
     }
 
     return (
-        <AuthContext.Provider value={{ GoogleSignIn,userRecord,Logout,emailRegisteration, emailLogin}}>
+        <AuthContext.Provider value={{ userRecord,Logout,emailRegisteration, emailLogin}}>
             {children}
         </AuthContext.Provider>
     )

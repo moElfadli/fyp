@@ -1,9 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getDocs, collection, query, deleteDoc, doc } from "firebase/firestore";
+import { getDocs, collection,  deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase-config";
 import Question from "./RenderQuestion";
-import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { BsTextCenter } from "react-icons/bs";
@@ -11,9 +10,8 @@ import { RiCheckboxMultipleFill } from "react-icons/ri";
 import { AiFillDelete } from "react-icons/ai";
 import { GrScorecard } from "react-icons/gr";
 
-const ShowQuestions = () => {
+const ManageQuestions = () => {
   const [Questions, SetQuestions] = useState([]);
-  const { userRecord } = UserAuth();
   const navigate = useNavigate();
   const { quizName } = useParams();
 
@@ -31,6 +29,7 @@ const ShowQuestions = () => {
     fetchData().catch((error) => {
       console.log(error);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function deleteQuestion(id) {
@@ -115,4 +114,4 @@ bg-orange-500 hover:bg-orange-700 text-white font-bold py-4 px-6"
     </div>
   );
 };
-export default ShowQuestions;
+export default ManageQuestions;

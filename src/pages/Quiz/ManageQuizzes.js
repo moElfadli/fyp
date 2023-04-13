@@ -23,6 +23,7 @@ const ManageQuizzes = () => {
       );
     };
     getQuizCollections();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // this function will delete a quiz from the database
@@ -59,7 +60,7 @@ const ManageQuizzes = () => {
             <div>
               <button
                 key={quiz.id}
-                onClick={() => navigate(`/ShowQuestions/${quiz.id}`)}
+                onClick={() => navigate(`/ManageQuestions/${quiz.id}`)}
                 className="p-6 text-lg font-medium text-white bg-blue-600
              rounded-full hover:bg-blue-700"
               >
@@ -71,7 +72,7 @@ const ManageQuizzes = () => {
                   onClick={() => deleteQuiz(quiz.id)}
                   className=" p-2 text-lg mt-2 font-medium text-white bg-red-600 rounded-full hover:bg-red-700"
                 ><AiFillDelete size='1.5rem' />
-                  {/* Delete {quiz?.id} Quiz */}
+                  
                 </button>
               </div>
             </div>

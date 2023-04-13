@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDocs, collection, query } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../firebase-config";
 import Answer from "./TeacherReviewSubmissionAnswer";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +54,7 @@ const TeacherReviewSubmission = () => {
 
     //TODO instead of getting all users from the database, we should only get the users that have submitted
 
- 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

@@ -4,7 +4,7 @@ import {UserAuth} from '../../context/AuthContext';
 
 
 const Login = () => {
-    const { emailLogin, GoogleSignIn } = UserAuth();
+    const { emailLogin } = UserAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -29,19 +29,7 @@ const Login = () => {
 
     }
 
-async function RegisterWithGoogle(e){
 
-    e.preventDefault();
-    await GoogleSignIn().then((result) => {
-        if(result === true){
-            navigate('/');
-        }
-        else{
-            console.log("console.error();");
-        }
-        setLoading(false);
-    });
-}
    
 
     return (
@@ -86,19 +74,10 @@ async function RegisterWithGoogle(e){
                     <div className="mt-6 flex flex-col items-center">
                     <Link className="items-center" to="/register">Create new account</Link>
 
-                    <div className="flex flex-col items-center">
-                        <hr className="border-gray-800 dark:border-gray-600"/>
-                        <div className="text-gray-800 dark:text-white bg-white dark:bg-gray-900 px-4 mt-3 font-medium">or</div>
-                    </div>
+                   
                     </div>
 
-                    <div className="flex flex-row w-full">
-                        <button onClick={(e) => RegisterWithGoogle(e)} disabled={loading}
-                        className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline w-full mb-4" type="submit">
-                        Sign up With Google
-                        </button>
-                       
-                    </div>
+                   
                   
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import Home from './pages/Home';
 import ManageQuizzes from './pages/Quiz/ManageQuizzes';
 import CreateQuiz from './pages/Quiz/CreateQuiz';
-import ShowQuestions from './pages/Quiz/ShowQuestions';
+import ManageQuestions from './pages/Quiz/ManageQuestions';
 import AddMultipleChoice from './pages/Quiz/AddMultipleChoice';
 import AddOneWord from './pages/Quiz/AddOneWord';
 import CreateQuestions from './pages/Quiz/CreateQuestions';
@@ -21,6 +21,7 @@ import Login from './pages/Authentication/Login';
 
 
 
+
 function App() {
   return (
     <div>
@@ -30,7 +31,7 @@ function App() {
         <Navbar />
     
           <Routes>
-            <Route path='/ShowQuestions/:quizName' element={<ShowQuestions />} />
+            <Route path='/ManageQuestions/:quizName' element={<ManageQuestions />} />
             <Route path='/CreateQuestions/:quizName' element={<CreateQuestions />} />
             <Route path='/StudentSubmission/:quizName' element={<StudentSubmission />} />
             <Route path='/TeacherReviewSubmission/:quizName' element={<TeacherReviewSubmission />} />

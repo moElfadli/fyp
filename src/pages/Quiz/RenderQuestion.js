@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+
 
 // we use the variable question to render the question , score and question types
 const Question = ({
