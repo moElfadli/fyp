@@ -118,7 +118,7 @@ const AddMultipleChoice = () => {
           <button
             className="btnBack rounded-full py-2 px-10 hover:bg-red-dark 
             fixed bottom-8 right-4 p-4"
-            onClick={() => navigate(`/ShowQuestions/${quizName}`)}
+            onClick={() => navigate(`/ManageQuestions/${quizName}`)}
           >
             Back
           </button>

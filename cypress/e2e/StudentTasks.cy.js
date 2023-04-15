@@ -113,15 +113,10 @@ describe('Login_as_student', function() {
    
       cy.wait(3000)
       cy.get(':nth-child(1) > .mr-2').click()
-      cy.get(':nth-child(3) > div.mb-4 > .oneWord-question-input').type('5677')
-   
-      cy.get('.min-h-screen > .rounded-lg > form > .block:nth-child(2) > .mr-2').click()
      
-   
-      cy.get('.min-h-screen > .rounded-lg > form > .block:nth-child(2) > .mr-2').type('1577')
 
    
-      cy.get('body > #root > div > .min-h-screen > .bg-blue-500').click()
+      cy.get('.bg-blue-500').click()
       cy.wait(3000)
 
       //assert the url is correct

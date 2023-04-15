@@ -1,5 +1,5 @@
 import { useContext, createContext } from "react";
-import {  signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase-config";
 import React, {useState} from 'react';
 import {doc, getDoc,setDoc} from 'firebase/firestore';
@@ -8,7 +8,7 @@ import {doc, getDoc,setDoc} from 'firebase/firestore';
 
 const AuthContext = createContext()
 
-// this is where we declare the functions that will be used in the AuthContext file
+
 export const AuthContextProvider = ({children}) => {
 
    // this is a useState hook that allows us to store the user's data in local storage
@@ -116,7 +116,29 @@ async function emailLogin(email,password){
     });
     return success;
 }
+async function GoogleSignIn() {
 
+    const provider = new GoogleAuthProvider();
+
+
+    await signInWithPopup(auth, provider)
+    .then(result => {
+        // on success, try create a new user
+        createUser()
+    .then( result => {
+
+      // 
+        createUser(null)
+    })
+
+    .catch((error) => {
+        console.log(error);
+        return false;
+    });
+
+    })
+    return true;
+}
 
     async function Logout() {
         await signOut(auth).then(() => {
@@ -129,7 +151,8 @@ async function emailLogin(email,password){
     }
 
     return (
-        <AuthContext.Provider value={{ userRecord,Logout,emailRegisteration, emailLogin}}>
+       
+        <AuthContext.Provider value={{ GoogleSignIn,userRecord,Logout,emailRegisteration, emailLogin}}>
             {children}
         </AuthContext.Provider>
     )

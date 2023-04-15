@@ -65,7 +65,7 @@ const AddOneWord = () => {
                     >
                         Submit
                     </button>
-                    <button  onClick={() => navigate(`/ShowQuestions/${quizName}`)} className="btnBack rounded-full py-2 px-10 hover:bg-red-dark 
+                    <button  onClick={() => navigate(`/ManageQuestions/${quizName}`)} className="btnBack rounded-full py-2 px-10 hover:bg-red-dark 
             fixed bottom-8 right-4 p-4">
                         Back
                     </button>

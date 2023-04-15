@@ -4,7 +4,7 @@ import {UserAuth} from '../../context/AuthContext';
 
 
 const Login = () => {
-    const { emailLogin } = UserAuth();
+    const { emailLogin, GoogleSignIn  } = UserAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -29,7 +29,19 @@ const Login = () => {
 
     }
 
+    async function RegisterWithGoogle(e){
 
+        e.preventDefault();
+        await GoogleSignIn().then((result) => {
+            if(result === true){
+                navigate('/');
+            }
+            else{
+                console.log("console.error();");
+            }
+            setLoading(false);
+        });
+    }
    
 
     return (
@@ -77,7 +89,13 @@ const Login = () => {
                    
                     </div>
 
-                   
+                    <div className="flex flex-row w-full">
+                        <button onClick={(e) => RegisterWithGoogle(e)} disabled={loading}
+                        className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline w-full mb-4" type="submit">
+                        Sign in With Google
+                        </button>
+
+                    </div>
                   
                 </div>
             </div>

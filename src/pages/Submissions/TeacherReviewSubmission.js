@@ -86,7 +86,7 @@ const TeacherReviewSubmission = () => {
 };
 
 
-//this is where we loop through each question/answer collection in the submission document
+
 function renderSubmissions({ index, docid, value, quizName, user }) {
   return (
     <div>
